@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 60%;
+            margin: auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .item {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .carousel-controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .carousel-controls button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="carousel">
+    <div class="carousel-track">
+        <!-- Slide 1 -->
+        <div class="carousel-slide">
+            <div class="item">
+                <input type="radio" name="item" id="item1-1">
+                <label for="item1-1">
+                    <img src="1.jpg" alt="Item 1">
+                </label>
+            </div>
+            <div class="item">
+                <input type="radio" name="item" id="item1-2">
+                <label for="item1-2">
+                    <img src="2.jpg" alt="Item 2">
+                </label>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+            <div class="item">
+                <input type="radio" name="item" id="item2-1">
+                <label for="item2-1">
+                    <img src="3.jpg" alt="Item 3">
+                </label>
+            </div>
+            <div class="item">
+                <input type="radio" name="item" id="item2-2">
+                <label for="item4">
+                    <img src="4.jpg" alt="Item 4">
+                </label>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+            <div class="item">
+                <input type="radio" name="item" id="item3-1">
+                <label for="item5">
+                    <img src="5.jpg" alt="Item 5">
+                </label>
+            </div>
+            <div class="item">
+                <input type="radio" name="item" id="item3-2">
+                <label for="item6">
+                    <img src="6.jpg" alt="Item 6">
+                </label>
+            </div>
+        </div>
+        <!-- Add more slides similarly -->
+    </div>
+</div>
+
+<div class="carousel-controls">
+    <button id="prevButton" disabled>Previous</button>
+    <button id="nextButton">Next</button>
+</div>
+
+<script>
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.getElementById('nextButton');
+    const prevButton = document.getElementById('prevButton');
+    let currentSlideIndex = 0;
+
+    function updateCarousel() {
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
+        
+        prevButton.disabled = currentSlideIndex === 0;
+        nextButton.disabled = currentSlideIndex === slides.length - 1;
+    }
+
+    nextButton.addEventListener('click', () => {
+        currentSlideIndex++;
+        updateCarousel();
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentSlideIndex--;
+        updateCarousel();
+    });
+</script>
+
+</body>
+</html>
