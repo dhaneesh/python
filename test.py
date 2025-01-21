@@ -26,7 +26,6 @@ app.layout = html.Div([
                             {'label': html.Img(src=b64_image('4.jpg'), style={'width': '200px', 'height': '200px', 'borderRadius': '8px', 'margin': '0 auto'}), 'value': '4'},
                             {'label': html.Img(src=b64_image('5.jpg'), style={'width': '200px', 'height': '200px', 'borderRadius': '8px', 'margin': '0 auto'}), 'value': '5'},
                             {'label': html.Img(src=b64_image('6.jpg'), style={'width': '200px', 'height': '200px', 'borderRadius': '8px', 'margin': '0 auto'}), 'value': '6'},
-                            {'label': html.Img(src=b64_image('4.jpg'), style={'width': '200px', 'height': '200px', 'borderRadius': '8px', 'margin': '0 auto'}), 'value': '7'},
                         ],
                         labelStyle={'display': 'inline-block'},
                         value='1'  # Default selected value

@@ -1,13 +1,23 @@
 from dash import Dash, html, dcc, Input, Output, State, ALL
+import base64
+
+def b64_image(image_filename):
+    with open(image_filename, 'rb') as f:
+        image = f.read()
+    return 'data:image/png;base64,' + base64.b64encode(image).decode('utf-8')
 
 # Initialize the Dash app
 app = Dash(__name__)
 
 # Sample images and options for slides
 slides_data = [
-    {"id": "slide1", "image": "https://via.placeholder.com/300x200?text=Slide+1", "label": "Option 1"},
-    {"id": "slide2", "image": "https://via.placeholder.com/300x200?text=Slide+2", "label": "Option 2"},
-    {"id": "slide3", "image": "https://via.placeholder.com/300x200?text=Slide+3", "label": "Option 3"},
+    {"id": "slide1", "image": b64_image('1.jpg'), "label": "Option 1"},
+    {"id": "slide2", "image": b64_image('2.jpg'), "label": "Option 2"},
+    {"id": "slide3", "image": b64_image('3.jpg'), "label": "Option 3"},
+    {"id": "slide4", "image": b64_image('4.jpg'), "label": "Option 4"},
+    {"id": "slide5", "image": b64_image('5.jpg'), "label": "Option 5"},
+    {"id": "slide6", "image": b64_image('6.jpg'), "label": "Option 6"},
+
 ]
 
 # Layout
